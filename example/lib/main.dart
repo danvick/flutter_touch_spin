@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_touch_spin/flutter_touch_spin.dart';
+import 'package:intl/intl.dart';
 
 void main() => runApp(MyApp());
 
@@ -22,9 +23,11 @@ class _MyAppState extends State<MyApp> {
         body: Center(
           child: TouchSpin(
             iconSize: 24.0,
+            min: 5,
             max: 100,
             step: 5,
             value: 10,
+            displayFormat: NumberFormat.currency(locale: 'en_US', symbol: '\$'),
           ),
         ),
       ),
