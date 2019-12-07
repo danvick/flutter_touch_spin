@@ -6,7 +6,7 @@ class TouchSpin extends StatefulWidget {
   final num min;
   final num max;
   final num step;
-  final num iconSize;
+  final double iconSize;
   final ValueChanged<num> onChange;
   final NumberFormat displayFormat;
   final Icon subtractIcon;
@@ -54,8 +54,6 @@ class _TouchSpinState extends State<TouchSpin> {
 
   @override
   Widget build(BuildContext context) {
-    ThemeData theme = Theme.of(context);
-
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -64,8 +62,9 @@ class _TouchSpinState extends State<TouchSpin> {
           padding: widget.iconPadding,
           iconSize: widget.iconSize,
           color: minusBtnDisabled
-              ? widget.iconActiveColor ?? theme.disabledColor
-              : widget.iconDisabledColor ?? theme.textTheme.button.color,
+              ? widget.iconDisabledColor ?? Theme.of(context).disabledColor
+              : widget.iconActiveColor ??
+                  Theme.of(context).textTheme.button.color,
           icon: widget.subtractIcon,
           onPressed: minusBtnDisabled
               ? null
@@ -85,8 +84,9 @@ class _TouchSpinState extends State<TouchSpin> {
           padding: widget.iconPadding,
           iconSize: widget.iconSize,
           color: addBtnDisabled
-              ? widget.iconActiveColor ?? theme.disabledColor
-              : widget.iconDisabledColor ?? theme.textTheme.button.color,
+              ? widget.iconDisabledColor ?? Theme.of(context).disabledColor
+              : widget.iconActiveColor ??
+                  Theme.of(context).textTheme.button.color,
           icon: widget.addIcon,
           onPressed: addBtnDisabled
               ? null

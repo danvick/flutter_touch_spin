@@ -1,16 +1,49 @@
-# example
+# Usage
 
-An example app for flutter_touch_spin.
+```dart
+import 'package:flutter/material.dart';
+import 'package:flutter_touch_spin/flutter_touch_spin.dart';
+import 'package:intl/intl.dart';
 
-## Getting Started
+void main() => runApp(MyApp());
 
-This project is a starting point for a Flutter application.
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+class _MyAppState extends State<MyApp> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter TouchSpin Example',
+      theme: ThemeData(
+        brightness: Brightness.dark,
+        primarySwatch: Colors.blue,
+      ),
+      home: Scaffold(
+        appBar: AppBar(title: Text('Flutter TouchSpin Example'),),
+        body: Center(
+          child: TouchSpin(
+            min: 5,
+            max: 100,
+            step: 5,
+            value: 10,
+            displayFormat: NumberFormat.currency(locale: 'en_US', symbol: '\$'),
+            textStyle: TextStyle(fontSize: 36),
+            iconSize: 48.0,
+            addIcon: Icon(Icons.add_circle_outline),
+            subtractIcon: Icon(Icons.remove_circle_outline),
+            iconActiveColor: Colors.green,
+            iconPadding: EdgeInsets.all(20),
+            onChange: (val){
+              print(val);
+            },
+            iconDisabledColor: Colors.grey,
+          ),
+        ),
+      ),
+    );
+  }
+}
+```

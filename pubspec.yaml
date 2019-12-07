@@ -1,6 +1,6 @@
 name: flutter_touch_spin
 description: Simple number input spinner Widget for Flutter. Inspired by Bootstrap Touchspin
-version: 1.0.0
+version: 1.0.0+1
 author: Danvick Miller <danvickmiller@gmail.com>
 homepage: https://github.com/danvick/flutter_touch_spin
 
