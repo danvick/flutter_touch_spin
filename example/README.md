@@ -36,7 +36,7 @@ class _MyAppState extends State<MyApp> {
             subtractIcon: Icon(Icons.remove_circle_outline),
             iconActiveColor: Colors.green,
             iconPadding: EdgeInsets.all(20),
-            onChange: (val){
+            onChanged: (val){
               print(val);
             },
             iconDisabledColor: Colors.grey,

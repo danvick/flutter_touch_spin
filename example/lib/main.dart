@@ -34,9 +34,10 @@ class _MyAppState extends State<MyApp> {
             iconActiveColor: Colors.green,
             iconDisabledColor: Colors.grey,
             iconPadding: EdgeInsets.all(20),
-            onChange: (val){
+            onChanged: (val){
               print(val);
             },
+            enabled: true,
           ),
         ),
       ),

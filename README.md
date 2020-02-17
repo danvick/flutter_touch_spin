@@ -17,7 +17,7 @@ TouchSpin(
     iconActiveColor: Colors.green,
     iconDisabledColor: Colors.grey,
     iconPadding: EdgeInsets.all(20),
-    onChange: (val){
+    onChanged: (val){
         print(val);
     },
 ),
@@ -38,4 +38,4 @@ TouchSpin(
 |`iconActiveColor`|`Color`|`Theme.of(context).textTheme.button.color`|`false`|--|
 |`iconDisabledColor`|`Color`|`Theme.of(context).disabledColor`|`false`|--|
 |`iconPadding`|`EdgeInsetsGeometry`|`EdgeInsets.all(4.0)`|`false`|--|
-|`onChange`|`ValueChanged<num>`||`false`|--|
+|`onChanged`|`ValueChanged<num>`||`false`|--|

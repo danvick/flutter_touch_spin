@@ -7,7 +7,7 @@ class TouchSpin extends StatefulWidget {
   final num max;
   final num step;
   final double iconSize;
-  final ValueChanged<num> onChange;
+  final ValueChanged<num> onChanged;
   final NumberFormat displayFormat;
   final Icon subtractIcon;
   final Icon addIcon;
@@ -15,11 +15,12 @@ class TouchSpin extends StatefulWidget {
   final TextStyle textStyle;
   final Color iconActiveColor;
   final Color iconDisabledColor;
+  final bool enabled;
 
   const TouchSpin({
     Key key,
     this.value = 1.0,
-    this.onChange,
+    this.onChanged,
     this.min = 1.0,
     this.max = 9999999.0,
     this.step = 1.0,
@@ -31,6 +32,7 @@ class TouchSpin extends StatefulWidget {
     this.textStyle = const TextStyle(fontSize: 24),
     this.iconActiveColor,
     this.iconDisabledColor,
+    this.enabled = true,
   }) : super(key: key);
 
   @override
@@ -41,10 +43,14 @@ class _TouchSpinState extends State<TouchSpin> {
   num _value;
 
   bool get minusBtnDisabled =>
-      _value <= widget.min || _value - widget.step < widget.min;
+      _value <= widget.min ||
+      _value - widget.step < widget.min ||
+      !widget.enabled;
 
   bool get addBtnDisabled =>
-      _value >= widget.max || _value + widget.step > widget.max;
+      _value >= widget.max ||
+      _value + widget.step > widget.max ||
+      !widget.enabled;
 
   @override
   void initState() {
@@ -73,7 +79,7 @@ class _TouchSpinState extends State<TouchSpin> {
                   setState(() {
                     _value = newVal;
                   });
-                  if (widget.onChange != null) widget.onChange(newVal);
+                  if (widget.onChanged != null) widget.onChanged(newVal);
                 },
         ),
         Text(
@@ -95,7 +101,7 @@ class _TouchSpinState extends State<TouchSpin> {
                   setState(() {
                     _value = newVal;
                   });
-                  if (widget.onChange != null) widget.onChange(newVal);
+                  if (widget.onChanged != null) widget.onChanged(newVal);
                 },
         ),
       ],
