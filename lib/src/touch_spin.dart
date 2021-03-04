@@ -8,7 +8,7 @@ class TouchSpin extends StatefulWidget {
   final num step;
   final double iconSize;
   final ValueChanged<num> onChanged;
-  final NumberFormat displayFormat;
+  final NumberFormat? displayFormat;
   final Icon subtractIcon;
   final Icon addIcon;
   final EdgeInsetsGeometry iconPadding;
@@ -17,10 +17,10 @@ class TouchSpin extends StatefulWidget {
   final Color iconDisabledColor;
   final bool enabled;
 
-  const TouchSpin({
-    Key key,
+  TouchSpin({
+    Key? key,
     this.value = 1.0,
-    this.onChanged,
+    required this.onChanged,
     this.min = 1.0,
     this.max = 9999999.0,
     this.step = 1.0,
@@ -30,8 +30,8 @@ class TouchSpin extends StatefulWidget {
     this.addIcon = const Icon(Icons.add),
     this.iconPadding = const EdgeInsets.all(4.0),
     this.textStyle = const TextStyle(fontSize: 24),
-    this.iconActiveColor,
-    this.iconDisabledColor,
+    this.iconActiveColor = Colors.green,
+    this.iconDisabledColor = Colors.grey,
     this.enabled = true,
   }) : super(key: key);
 
@@ -40,7 +40,7 @@ class TouchSpin extends StatefulWidget {
 }
 
 class _TouchSpinState extends State<TouchSpin> {
-  num _value;
+  late num _value;
 
   bool get minusBtnDisabled =>
       _value <= widget.min ||
@@ -68,40 +68,38 @@ class _TouchSpinState extends State<TouchSpin> {
           padding: widget.iconPadding,
           iconSize: widget.iconSize,
           color: minusBtnDisabled
-              ? widget.iconDisabledColor ?? Theme.of(context).disabledColor
-              : widget.iconActiveColor ??
-                  Theme.of(context).textTheme.button.color,
+              ? widget.iconDisabledColor
+              : widget.iconActiveColor,
           icon: widget.subtractIcon,
           onPressed: minusBtnDisabled
               ? null
               : () {
                   num newVal = _value - widget.step;
-                  setState(() {
-                    _value = newVal;
-                  });
-                  if (widget.onChanged != null) widget.onChanged(newVal);
+
+                  setState(() => _value = newVal);
+
+                  widget.onChanged(newVal);
                 },
         ),
         Text(
-          '${widget.displayFormat == null ? _value.toString() : widget.displayFormat.format(_value)}',
+          '${widget.displayFormat == null ? _value.toString() : widget.displayFormat?.format(_value)}',
           style: widget.textStyle,
         ),
         IconButton(
           padding: widget.iconPadding,
           iconSize: widget.iconSize,
           color: addBtnDisabled
-              ? widget.iconDisabledColor ?? Theme.of(context).disabledColor
-              : widget.iconActiveColor ??
-                  Theme.of(context).textTheme.button.color,
+              ? widget.iconDisabledColor
+              : widget.iconActiveColor,
           icon: widget.addIcon,
           onPressed: addBtnDisabled
               ? null
               : () {
                   num newVal = _value + widget.step;
-                  setState(() {
-                    _value = newVal;
-                  });
-                  if (widget.onChanged != null) widget.onChanged(newVal);
+
+                  setState(() => _value = newVal);
+
+                  widget.onChanged(newVal);
                 },
         ),
       ],

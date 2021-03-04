@@ -19,7 +19,9 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
-        appBar: AppBar(title: Text('Flutter TouchSpin Example'),),
+        appBar: AppBar(
+          title: Text('Flutter TouchSpin Example'),
+        ),
         body: Center(
           child: TouchSpin(
             value: 10,
@@ -34,7 +36,7 @@ class _MyAppState extends State<MyApp> {
             iconActiveColor: Colors.green,
             iconDisabledColor: Colors.grey,
             iconPadding: EdgeInsets.all(20),
-            onChanged: (val){
+            onChanged: (val) {
               print(val);
             },
             enabled: true,

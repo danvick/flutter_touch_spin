@@ -5,12 +5,12 @@ author: Danvick Miller <danvickmiller@gmail.com>
 homepage: https://github.com/danvick/flutter_touch_spin
 
 environment:
-  sdk: ">=2.5.0 <3.0.0"
+  sdk: ">=2.12.0-0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  intl: ^0.16.1
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:
