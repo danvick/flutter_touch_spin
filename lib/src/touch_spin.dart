@@ -58,6 +58,18 @@ class _TouchSpinState extends State<TouchSpin> {
     _value = widget.value;
   }
 
+  Color _spinButtonColor(bool btnDisabled) => btnDisabled
+      ? widget.iconDisabledColor ?? Theme.of(context).disabledColor
+      : widget.iconActiveColor ?? Theme.of(context).textTheme.button.color;
+
+  void _adjustValue(num adjustment) {
+    num newVal = _value + adjustment;
+    setState(() {
+      _value = newVal;
+    });
+    widget.onChanged?.call(newVal);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -67,42 +79,22 @@ class _TouchSpinState extends State<TouchSpin> {
         IconButton(
           padding: widget.iconPadding,
           iconSize: widget.iconSize,
-          color: minusBtnDisabled
-              ? widget.iconDisabledColor ?? Theme.of(context).disabledColor
-              : widget.iconActiveColor ??
-                  Theme.of(context).textTheme.button.color,
+          color: _spinButtonColor(minusBtnDisabled),
           icon: widget.subtractIcon,
-          onPressed: minusBtnDisabled
-              ? null
-              : () {
-                  num newVal = _value - widget.step;
-                  setState(() {
-                    _value = newVal;
-                  });
-                  if (widget.onChanged != null) widget.onChanged(newVal);
-                },
+          onPressed: minusBtnDisabled ? null : () => _adjustValue(-widget.step),
         ),
         Text(
-          '${widget.displayFormat == null ? _value.toString() : widget.displayFormat.format(_value)}',
+          widget.displayFormat == null
+              ? _value.toString()
+              : widget.displayFormat.format(_value),
           style: widget.textStyle,
         ),
         IconButton(
           padding: widget.iconPadding,
           iconSize: widget.iconSize,
-          color: addBtnDisabled
-              ? widget.iconDisabledColor ?? Theme.of(context).disabledColor
-              : widget.iconActiveColor ??
-                  Theme.of(context).textTheme.button.color,
+          color: _spinButtonColor(addBtnDisabled),
           icon: widget.addIcon,
-          onPressed: addBtnDisabled
-              ? null
-              : () {
-                  num newVal = _value + widget.step;
-                  setState(() {
-                    _value = newVal;
-                  });
-                  if (widget.onChanged != null) widget.onChanged(newVal);
-                },
+          onPressed: addBtnDisabled ? null : () => _adjustValue(widget.step),
         ),
       ],
     );
