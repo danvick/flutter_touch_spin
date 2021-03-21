@@ -7,18 +7,18 @@ class TouchSpin extends StatefulWidget {
   final num max;
   final num step;
   final double iconSize;
-  final ValueChanged<num> onChanged;
-  final NumberFormat displayFormat;
+  final ValueChanged<num>? onChanged;
+  final NumberFormat? displayFormat;
   final Icon subtractIcon;
   final Icon addIcon;
   final EdgeInsetsGeometry iconPadding;
   final TextStyle textStyle;
-  final Color iconActiveColor;
-  final Color iconDisabledColor;
+  final Color? iconActiveColor;
+  final Color? iconDisabledColor;
   final bool enabled;
 
   const TouchSpin({
-    Key key,
+    Key? key,
     this.value = 1.0,
     this.onChanged,
     this.min = 1.0,
@@ -40,7 +40,7 @@ class TouchSpin extends StatefulWidget {
 }
 
 class _TouchSpinState extends State<TouchSpin> {
-  num _value;
+  late num _value;
 
   bool get minusBtnDisabled =>
       _value <= widget.min ||
@@ -58,9 +58,9 @@ class _TouchSpinState extends State<TouchSpin> {
     _value = widget.value;
   }
 
-  Color _spinButtonColor(bool btnDisabled) => btnDisabled
+  Color? _spinButtonColor(bool btnDisabled) => btnDisabled
       ? widget.iconDisabledColor ?? Theme.of(context).disabledColor
-      : widget.iconActiveColor ?? Theme.of(context).textTheme.button.color;
+      : widget.iconActiveColor ?? Theme.of(context).textTheme.button?.color;
 
   void _adjustValue(num adjustment) {
     num newVal = _value + adjustment;
@@ -84,9 +84,7 @@ class _TouchSpinState extends State<TouchSpin> {
           onPressed: minusBtnDisabled ? null : () => _adjustValue(-widget.step),
         ),
         Text(
-          widget.displayFormat == null
-              ? _value.toString()
-              : widget.displayFormat.format(_value),
+          widget.displayFormat?.format(_value) ?? _value.toString(),
           style: widget.textStyle,
         ),
         IconButton(
