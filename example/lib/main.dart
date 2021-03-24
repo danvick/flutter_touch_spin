@@ -19,7 +19,9 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
-        appBar: AppBar(title: Text('Flutter TouchSpin Example'),),
+        appBar: AppBar(
+          title: Text('Flutter TouchSpin Example'),
+        ),
         body: Center(
           child: TouchSpin(
             value: 10,
@@ -27,14 +29,14 @@ class _MyAppState extends State<MyApp> {
             max: 100,
             step: 5,
             displayFormat: NumberFormat.currency(locale: 'en_US', symbol: '\$'),
-            textStyle: TextStyle(fontSize: 36),
+            textStyle: const TextStyle(fontSize: 36),
             iconSize: 48.0,
-            addIcon: Icon(Icons.add_circle_outline),
-            subtractIcon: Icon(Icons.remove_circle_outline),
+            addIcon: const Icon(Icons.add_circle_outline),
+            subtractIcon: const Icon(Icons.remove_circle_outline),
             iconActiveColor: Colors.green,
             iconDisabledColor: Colors.grey,
-            iconPadding: EdgeInsets.all(20),
-            onChanged: (val){
+            iconPadding: const EdgeInsets.all(20),
+            onChanged: (val) {
               print(val);
             },
             enabled: true,
