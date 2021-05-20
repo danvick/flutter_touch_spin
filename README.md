@@ -2,6 +2,9 @@
 
 Simple number input spinner Widget for Flutter. Inspired by [Bootstrap Touchspin](https://www.virtuosoft.eu/code/bootstrap-touchspin/)
 
+___
+<img src="https://github.com/danvick/flutter_touch_spin/blob/master/example/assets/screenshot.png?raw=true" alt="Screenshot" width="200"/>
+___
 ## Getting Started
 
 ```dart
