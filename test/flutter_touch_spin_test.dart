@@ -5,10 +5,8 @@ import 'package:flutter_touch_spin/flutter_touch_spin.dart';
 void main() {
   testWidgets('Touch Spin', (WidgetTester tester) async {
     await tester.pumpWidget(
-      MaterialApp(
-        home: Scaffold(
-          body: TouchSpin(),
-        ),
+      const MaterialApp(
+        home: Scaffold(body: TouchSpin()),
       ),
     );
   });
