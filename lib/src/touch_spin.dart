@@ -58,11 +58,13 @@ class _TouchSpinState extends State<TouchSpin> {
     _value = widget.value;
   }
 
+  @override
   void didUpdateWidget(TouchSpin oldWidget) {
     super.didUpdateWidget(oldWidget);
 
     if (oldWidget.value != widget.value) {
-      _value = widget.value;
+      setState(() => _value = widget.value);
+      widget.onChanged?.call(widget.value);
     }
   }
 
@@ -72,9 +74,7 @@ class _TouchSpinState extends State<TouchSpin> {
 
   void _adjustValue(num adjustment) {
     num newVal = _value + adjustment;
-    setState(() {
-      _value = newVal;
-    });
+    setState(() => _value = newVal);
     widget.onChanged?.call(newVal);
   }
 
@@ -94,6 +94,7 @@ class _TouchSpinState extends State<TouchSpin> {
         Text(
           widget.displayFormat?.format(_value) ?? _value.toString(),
           style: widget.textStyle,
+          key: ValueKey(_value),
         ),
         IconButton(
           padding: widget.iconPadding,

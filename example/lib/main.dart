@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_touch_spin/flutter_touch_spin.dart';
 import 'package:intl/intl.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   _MyAppState createState() => _MyAppState();
 }
@@ -22,13 +24,12 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('Flutter TouchSpin'),
-        ),
+        appBar: AppBar(title: const Text('Flutter TouchSpin')),
         body: Center(
           child: Column(
             children: [
               TouchSpin(
+                key: UniqueKey(),
                 value: value,
                 min: 5,
                 max: 100,
@@ -43,11 +44,11 @@ class _MyAppState extends State<MyApp> {
                 iconDisabledColor: Colors.grey,
                 iconPadding: const EdgeInsets.all(20),
                 onChanged: (val) {
-                  print(val);
+                  debugPrint(val.toString());
                 },
                 enabled: true,
               ),
-              Divider(),
+              const Divider(),
               Row(
                 children: [
                   Expanded(
@@ -64,12 +65,12 @@ class _MyAppState extends State<MyApp> {
                       iconDisabledColor: Colors.grey,
                       iconPadding: const EdgeInsets.all(20),
                       onChanged: (val) {
-                        print(val);
+                        debugPrint(val.toString());
                       },
                       enabled: true,
                     ),
                   ),
-                  VerticalDivider(),
+                  const VerticalDivider(),
                   Expanded(
                     child: TouchSpin(
                       value: 10,
@@ -84,7 +85,7 @@ class _MyAppState extends State<MyApp> {
                       iconDisabledColor: Colors.grey,
                       iconPadding: const EdgeInsets.all(20),
                       onChanged: (val) {
-                        print(val);
+                        debugPrint(val.toString());
                       },
                       enabled: true,
                     ),
@@ -93,11 +94,9 @@ class _MyAppState extends State<MyApp> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  setState(() {
-                    value = 25;
-                  });
+                  setState(() => value = 25);
                 },
-                child: Text('Set to \$25'),
+                child: const Text('Set to \$25'),
               ),
             ],
           ),
