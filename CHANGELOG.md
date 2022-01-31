@@ -1,6 +1,9 @@
+## [2.0.0] - 31-Jan-2022
+* Added ability to update `TouchSpin` value on the fly
+
 ## [2.0.0-nullsafety.1] - 24-Mar-2021
 - Null-safety code changes
-- Documntation improvements
+- Documentation improvements
 
 ## [2.0.0-nullsafety.0] - 05-Mar-2021
 - Bumped up `intl` to `^0.17.0` for Flutter 2.\* compatibility
