@@ -10,6 +10,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  double value = 10;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -27,7 +29,7 @@ class _MyAppState extends State<MyApp> {
           child: Column(
             children: [
               TouchSpin(
-                value: 10,
+                value: value,
                 min: 5,
                 max: 100,
                 step: 5,
@@ -88,7 +90,15 @@ class _MyAppState extends State<MyApp> {
                     ),
                   ),
                 ],
-              )
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    value = 25;
+                  });
+                },
+                child: Text('Set to \$25'),
+              ),
             ],
           ),
         ),

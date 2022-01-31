@@ -58,6 +58,14 @@ class _TouchSpinState extends State<TouchSpin> {
     _value = widget.value;
   }
 
+  void didUpdateWidget(TouchSpin oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    if (oldWidget.value != widget.value) {
+      _value = widget.value;
+    }
+  }
+
   Color? _spinButtonColor(bool btnDisabled) => btnDisabled
       ? widget.iconDisabledColor ?? Theme.of(context).disabledColor
       : widget.iconActiveColor ?? Theme.of(context).textTheme.button?.color;
