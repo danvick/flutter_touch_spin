@@ -63,7 +63,7 @@ class _TouchSpinState extends State<TouchSpin> {
     super.didUpdateWidget(oldWidget);
 
     if (oldWidget.value != widget.value) {
-      setState(() => _value = widget.value);
+      _value = widget.value;
       widget.onChanged?.call(widget.value);
     }
   }
