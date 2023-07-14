@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_touch_spin_2/flutter_touch_spin.dart';
+import 'package:flutter_touch_spin_2/flutter_touch_spin_2.dart';
 import 'package:intl/intl.dart';
 
 void main() => runApp(const MyApp());

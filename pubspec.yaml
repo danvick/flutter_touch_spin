@@ -3,11 +3,11 @@ description: >-
   A re-upload of flutter_touch_spin (https://pub.dev/packages/flutter_touch_spin).
   
   Reason: to keep dependencies up to date with the latest version of Reactive Forms, to use in the reactive_touch_spin widget.
-version: 1.0.0
+version: 0.0.1
 homepage: https://github.com/benjifarquhar/flutter_touch_spin_2
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=2.12.0 <4.0.0"
 
 dependencies:
   flutter:
