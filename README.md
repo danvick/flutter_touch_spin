@@ -1,4 +1,8 @@
-# flutter_touch_spin
+# flutter_touch_spin_2
+
+A re-upload of [flutter_touch_spin](https://pub.dev/packages/flutter_touch_spin).
+  
+Reason: to keep dependencies up to date with the latest version of Reactive Forms, to use in the reactive_touch_spin widget.
 
 Simple number input spinner Widget for Flutter. Inspired by [Bootstrap Touchspin](https://www.virtuosoft.eu/code/bootstrap-touchspin/)
 

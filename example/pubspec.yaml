@@ -8,7 +8,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutter_touch_spin:
+  flutter_touch_spin_2:
     path: ../
 
 dev_dependencies:
